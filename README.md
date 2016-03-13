@@ -21,6 +21,7 @@ Italiano: DD-MM-AAAA
 Germânico: DD.MM.AAAA
 ANSI: AAAA.MM.DD
 
+
 Obs.: usar ano de 4 dígitos.
 Observe que formato de data é simplesmente uma forma de exibição e entrada de dados. Formato de data não muda o conteúdo.
 
