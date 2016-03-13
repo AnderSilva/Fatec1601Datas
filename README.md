@@ -16,9 +16,13 @@ Cada objeto Data deverá acionar consistência automática sempre que seu conte�
 A classe deve dar suporte aos seguintes formatos de data:
 
 Britânico: DD/MM/AAAA
+
 Americano: MM/DD/AAAA
+
 Italiano: DD-MM-AAAA
+
 Germânico: DD.MM.AAAA
+
 ANSI: AAAA.MM.DD
 
 
