@@ -1,7 +1,6 @@
 # Fatec1601Datas
 Introducao POO - Uso de Classes java
 
-FACULDADE DE TECNOLOGIA DE SÃO PAULO
 Linguagem e Técnicas de Programação Orientada a Objetos
 1º Trabalho: Classe Data
 
