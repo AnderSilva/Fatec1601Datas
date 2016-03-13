@@ -1,15 +1,16 @@
+package classe;
 /**
  * 
  */
 
 /**
- * @author ander
+ * @author 
  *
  */
-public class Datas {
+public class Data {
 	//Variaveis de Classe
 	static int formato = 0;
-	static string separador = '/';
+	static String separador = "/";
 	
 	//Variaveis de instancia
 	
@@ -28,11 +29,12 @@ public class Datas {
 	
 	static boolean mudaFormato(int f){
 		// retorna false se o formato for invalido
+		return false;
 	}
 	
 	
 	static boolean bissexto(int ano){
-		
+		return false;
 	}
 	static int diasMes(int m){
 		//Retorna quantos dias tem o mes m informado
@@ -60,18 +62,23 @@ public class Datas {
 		 * Retorna uma string a partir do conteúdo da instancia que 
 		 * ativa o método, de modo que seja respeitado o formato
 		 */
-		
+		return "15/02/2016";
 	}
 	
 	public Data soma(int dias){
 		// Soma: Data + dias => Outra Data posterior em dias
-		
+		Data dt = new Data();
+		return dt;
 	}
 	public Data sub(int dias){
 		//Subtração 1: Data – dias => Data anterior em dias
+		Data dt = new Data();
+		return dt;
 	}
 	public long sub(Data d){
 		//Subtração 2: Data – Data => dias decorridos entre as duas datas.
+		long sub=1000;
+		return sub;
 	}
 	
 	//Metodos auxiliares privativos	
@@ -80,7 +87,8 @@ public class Datas {
 		 * Fornece um valor long que significa o nº de dias 
 		 * decorridos desde 1 de janeiro de 1900 até a data conteúdo da instancia.
 		 */
-		
+		long dias=1000;
+		return dias;
 	}
 	
 	private void diasData(long d){
