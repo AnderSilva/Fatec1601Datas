@@ -30,7 +30,11 @@ public class Data {
 	
 	
 	static boolean bissexto(int ano){
-		return false;
+		if ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	static int diasMes(int m){
 		//Retorna quantos dias tem o mes m informado
