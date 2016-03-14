@@ -8,7 +8,7 @@ public class Teste {
 		// TODO Auto-generated method stub
 
 		Data data = new Data(14,3,2016); 
-		System.out.print(data.stringData("14/03/2016"));
+		System.out.print(data.stringData("14/02/2016"));
 	}
 
 }
