@@ -21,25 +21,20 @@ public class Data {
 		this.dia = dia;
 	}
 	public Data(Data d) {
-		
+		this.ano = d.ano;
+		this.mes = d.mes;
+		this.dia = d.dia;
 	}
-	
 	
 	
 	//Metodos 
-	
-	static boolean mudaFormato(int f){
-		// retorna false se o formato for invalido
-		return false;
-	}
-	
-	
 	static boolean bissexto(int ano){
 		if ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)) {
 			return true;
 		}
-		return false;
-	}
+	return false;
+	}	
+
 	static int diasMes(int mes, int ano){
 		//Retorna quantos dias tem o mes m informado
 		
@@ -55,6 +50,10 @@ public class Data {
 		return 0;	
 	}
 	
+	static boolean mudaFormato(int f){
+		// retorna false se o formato for invalido
+		return false;
+	}
 	
 	public boolean stringData(String s){
 		/*
@@ -72,8 +71,7 @@ public class Data {
 		 * ativa o método, de modo que seja respeitado o formato
 		 */
 		return "15/02/2016";
-	}
-	
+	}	
 	public Data soma(int dias){
 		// Soma: Data + dias => Outra Data posterior em dias
 		Data dt = new Data();
@@ -91,17 +89,17 @@ public class Data {
 	}
 	
 	//Metodos auxiliares privativos	
-	private long dataDias() {	
+	private long dataDias() {
 		int bis = 0;											
 		int noBis = 0;
-		for(int anoInicial = 1900; anoInicial < ano; anoInicial++) {
+		for(int anoInicial = 1900; anoInicial < this.ano; anoInicial++) {
 			if ( bissexto(anoInicial)) {						
 				bis+=1;											
-				anoInicial++;									
+				anoInicial++;
 			}
 			else {												
 				noBis+=1;										
-				anoInicial++;									
+				anoInicial++;
 			}
 		}
 		int diasAnos = (bis * 366) + (noBis * 365);
