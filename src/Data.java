@@ -7,13 +7,18 @@ public class Data {
 	//Variaveis de Classe
 	static int formato = 0;
 	static String separador = "/";
+	int ano = 0;
+	int mes = 0;
+	int dia = 0;
 	
 	//Variaveis de instancia
 	
 	//Construtores
 	public Data(){}
 	public Data(int dia, int mes, int ano ){
-		
+		this.ano = ano;
+		this.mes = mes;
+		this.dia = dia;
 	}
 	public Data(Data d) {
 		
@@ -32,18 +37,22 @@ public class Data {
 	static boolean bissexto(int ano){
 		if ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
-	static int diasMes(int m){
+	static int diasMes(int mes, int ano){
 		//Retorna quantos dias tem o mes m informado
 		
-		//if mes = 2 e ano for bissexto , return 29
-		//else , caso normal , abaixo:
-		
-		int meses [] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-		return meses[m];		
+		if ((mes == 2) && (bissexto(ano))) {
+			return 29;
+		}
+
+		if ((mes >=1) && (mes <=12)) {
+			int meses [] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+			return meses[mes-1];
+		}
+
+		return 0;	
 	}
 	
 	
@@ -82,13 +91,29 @@ public class Data {
 	}
 	
 	//Metodos auxiliares privativos	
-	private long dataDias(){
-		/*
-		 * Fornece um valor long que significa o nº de dias 
-		 * decorridos desde 1 de janeiro de 1900 até a data conteúdo da instancia.
-		 */
-		long dias=1000;
-		return dias;
+	private long dataDias() {	
+		int bis = 0;											
+		int noBis = 0;
+		for(int anoInicial = 1900; anoInicial < ano; anoInicial++) {
+			if ( bissexto(anoInicial)) {						
+				bis+=1;											
+				anoInicial++;									
+			}
+			else {												
+				noBis+=1;										
+				anoInicial++;									
+			}
+		}
+		int diasAnos = (bis * 366) + (noBis * 365);
+	
+		while (mes != 0) {
+			int diasMeses = 0;
+			diasMeses += diasMes(mes);   //???;  	(variável diasMeses que conterá o valor do total de dias dos meses)
+			mes--;		//	(problema: colocar outra variável com os dias de cada mes pra somar)
+		}
+
+		//long totalDias = diasAnos + diasMeses + dia;
+		return 100;
 	}
 	
 	private void diasData(long d){
