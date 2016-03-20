@@ -12,7 +12,9 @@ public class Data {
 	int dia = 0;
 	
 	//Variaveis de instancia
-	
+	static int componentes[]
+	static int termos[] = {0, 1, 2}
+		
 	//Construtores
 	public Data(){}
 	public Data(int dia, int mes, int ano ){
@@ -56,13 +58,36 @@ public class Data {
 	}
 	
 	public boolean stringData(String s){
+		int k=0;
+		for (int i=0 ; i==strdata.lenght() ; i++)
+		{
+   			if ((strdata.charAt(i) == separador) && (k==0))
+   			{
+   				sub1 = strdata.substring(0, i)
+				pos1 = i
+				k++
+   			}
+   			else if ((k==1) && (strdata.charAt(i) == separador))
+			{
+   				sub2 = strdata.substring(pos1+1, i)
+			        pos2 = i
+			   	k++
+		         }
+   			else	if (k == 2)
+   				sub3 = strdata.substring(pos2+1)
+			else 
+   				return false;	        
+		} 
+		componentes[termos[0]] = Integer.parseInt(sub1);
+		componentes[termos[1]] = Integer.parseInt(sub2);
+		componentes[termos[2]] = Integer.parseInt(sub3);
+		return true;
 		/*
 		 * A instancia que ativa este método deve assumir o valor 
 		 * correspondente à string recebida como parâmetro. 
 		 * A data passará pela consistencia, 
 		 * retornará true para data OK, e false para data inválida.
 		 */
-		return true;
 	}
 	
 	public String dataString(){
