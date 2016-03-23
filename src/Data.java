@@ -6,7 +6,7 @@
 public class Data {
 	//Variaveis de Classe	
 	static int  formato   = 0;
-	// 0 - Britânico: DD/MM/AAAAlalalla
+	// 0 - Britânico: DD/MM/AAAA
 	// 1 - Americano: MM/DD/AAAA
 	// 2 - Italiano : DD-MM-AAAA
 	// 3 - Germânico: DD.MM.AAAA
@@ -25,19 +25,28 @@ public class Data {
 	//Exemplo de montagem da string da data:
 	//“” + componentes[termos[0]]+separador+componentes[termos[1]]+separador+componentes[termos[2]];
 		
-	//Construtores	
+	//Construtores
 	public Data(int dia, int mes, int ano){
 		this.componentes[0] = dia;
 		this.componentes[1] = mes;
-		this.componentes[2] = ano;		
-	}
-	public Data(String data){		
-		//Recebe uma string e 
-		//atribui cada termo no vetor de componentes
-		//conforme o formato que estiver atualmente
+		this.componentes[2] = ano;
 		
-		//1.o splitar (separar a string) usando o separador e descobrir quem é dia,mes,ano		
-		//2.o preencher o vetor de componentes
+		if (!ConsisteData() ){
+			zeraComponentes();
+		}
+	}
+	
+	private void zeraComponentes(){
+		for (int i=0;i<=2;i++){
+			this.componentes[i] = 0;	
+		}
+	}
+	
+	public Data(String data){
+		
+		if (!stringData(data)){
+			zeraComponentes();
+		}
 	}
 	
 	public Data(Data d) {
@@ -47,7 +56,7 @@ public class Data {
 	}
 	
 	
-	private String getStringData(){ // testar
+	public String getStringData(){ // testar
 		//Recebe a data instanciada e retorna uma string de data
 		//Exemplo 13,6,2016 retornaria 13/06/2016 no formato britanico (0)
 		
@@ -58,15 +67,11 @@ public class Data {
 
 	
 	//Metodos 
-	public boolean ConsisteData(Data d){ //testar
-		// Esse método recebe uma variavel do tipo Data e apos 
-		// passar por validações, retorna True se for uma data válida
-		String strdata = getStringData();
-		
-		if (!this.stringData( strdata )) return false; //Se stringData for falso, retorna falso
+	public boolean ConsisteData(){ //testar
+		// Esse método efetua validações, retorna True se for uma data válida
 										
-		int diasM = diasMes(this.componentes[0],this.componentes[2]);
-		return (diasM>=28 && diasM<=31); //se diasMes estiver fora do range => falso		
+		int diasM = diasMes(this.componentes[1],this.componentes[2]);
+		return (diasM!=0); //se diasMes estiver fora do range => falso		
 	}
 		
 	static boolean bissexto(int ano){ //ok
@@ -74,7 +79,7 @@ public class Data {
 	}	
 
 	static int diasMes(int mes, int ano){
-		//Retorna quantos dias tem o mes m informado
+		//Retorna quantos dias tem o mes m informado e 0 quando houver erro
 		
 		if ((mes == 2) && (bissexto(ano))) {
 			return 29;
@@ -85,7 +90,7 @@ public class Data {
 			return meses[mes-1];
 		}
 
-		return 0;	
+		return 0;
 	}
 	
 	static boolean mudaFormato(int f){ //testar
@@ -98,15 +103,13 @@ public class Data {
 		return true;
 	}
 	
-	public boolean stringData(String s){ //testar
+	public boolean stringData(String strdata){ //testar
 		/*
 		 * A instancia que ativa este método deve assumir o valor 
 		 * correspondente à string recebida como parâmetro. 
 		 * A data passará pela consistencia, 
 		 * retornará true para data OK, e false para data inválida.
-		 */
-		
-		String strdata = getStringData(); 
+		 */ 
 		
 		int k=0, 
 			pos1 = 0,
@@ -132,12 +135,12 @@ public class Data {
 			else 
    				return false;	        
 		} 
-		
-		componentes[ vetfor[ formato ][0] ] = Integer.parseInt(sub1);
-		componentes[ vetfor[ formato ][1] ] = Integer.parseInt(sub2);
-		componentes[ vetfor[ formato ][2] ] = Integer.parseInt(sub3);
-		return true;
-		
+		// Chegando aqui, os separadores estao ok
+		// chamaremos o restante da consistencia
+		this.componentes[0] = Integer.parseInt(sub1);
+		this.componentes[1] = Integer.parseInt(sub2);
+		this.componentes[2] = Integer.parseInt(sub3);
+		return ConsisteData();		
 	}
 	
 	public String dataString(){
