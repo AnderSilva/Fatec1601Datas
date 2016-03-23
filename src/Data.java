@@ -6,7 +6,7 @@
 public class Data {
 	//Variaveis de Classe	
 	static int  formato   = 0;
-	// 0 - Britânico: DD/MM/AAAA
+	// 0 - Britânico: DD/MM/AAAAlalalla
 	// 1 - Americano: MM/DD/AAAA
 	// 2 - Italiano : DD-MM-AAAA
 	// 3 - Germânico: DD.MM.AAAA
