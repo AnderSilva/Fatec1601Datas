@@ -3,12 +3,17 @@ import java.util.Date;
 public class Teste2 {
 	
 	private void diasData(long d){
+		int anoAnterior = 0;
+		int i = diasMes[1]; 
+		// i representa o primeiro mes do diasMes
+		// problema: como colocar o parametro ano
+			
 		if ( d >= 366 ) {											
 		// verifica se d e maior que o numero de um ano bissexto
-			int numeroAnos = d / 366;								
+			int numeroAnos = (int) (d / 366);								
 			// conta mais ou menos quantos anos inteiros tem
 			// tem que pegar a parte inteira do decimal
-			int anoAnterior = 1900 + numeroAnos;					
+			anoAnterior = 1900 + numeroAnos;					
 			// verifica o intervalo de anos, de 1900 ate x anos
 			for ( int i = 1900 ; i <= anoAnterior ; i++ ) {			
 			// para 1900 ate x anos, vai incrementando
@@ -21,7 +26,8 @@ public class Teste2 {
 					int d-= 365;									
 					// senao e subtraido de d o valor de 365 dias
 				}
-			} return d;												
+			} 
+			return d;												
 			// retorna o resto da subtracao
 		}
 		else {
@@ -29,8 +35,6 @@ public class Teste2 {
 			// enquanto d for diferente de zero
 				int ano = anoAnterior + 1;  				
 				// ano atual e o anterior mais um
-				int i = 1;  							
-				// i recebe um que sera referente ao mes de janeiro
 				bissexto(ano);										
 				// chama bissexto
 				diasMes(i);								
@@ -39,7 +43,7 @@ public class Teste2 {
 				// incrementa i
 				// TODO: como saber quando parar se verificar os meses, quando o d for menor de 30 ou 28
 				// TODO: verificar o resto dos dias.
-				}
+			}
 		}
 		int dia = ?;
 		// resto do dia que e o dia da data atual
