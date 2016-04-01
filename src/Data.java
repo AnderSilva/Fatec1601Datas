@@ -1,14 +1,4 @@
 
-/**
- * @authores
- * 		ANGELICA ROCHA - 14201566
- * 	    ANDERSON SILVA - 15213661
- * 		CAROLINA LOPES - 14211778
- * 		DEVIDE         - 
- * 		JESSICA VILELA - 14201575
- * 		SILVIO LUIS JR - 14211811
- * 
- */
 public class Data {
 	// 0 - Britânico: DD/MM/AAAA
 	// 1 - Americano: MM/DD/AAAA
